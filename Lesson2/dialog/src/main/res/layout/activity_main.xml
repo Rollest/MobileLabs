@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/alertDialogButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClickShowDialog"
+            android:text="ShowAlertDialogue"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.098" />
+
+        <Button
+            android:id="@+id/timeDialogButton"
+            android:layout_width="187dp"
+            android:layout_height="52dp"
+            android:layout_marginTop="60dp"
+            android:onClick="onClickShowTimeDialog"
+            android:text="ShowTimeDialog"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/alertDialogButton" />
+
+        <Button
+            android:id="@+id/dateDialogButton"
+            android:layout_width="170dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="60dp"
+            android:onClick="onClickShowDateDialog"
+            android:text="ShowDateDialog"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/timeDialogButton" />
+
+        <Button
+            android:id="@+id/progressDialogButton"
+            android:layout_width="161dp"
+            android:layout_height="55dp"
+            android:layout_marginTop="60dp"
+            android:onClick="onClickShowProgressDialog"
+            android:text="ShowProgressDialog"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dateDialogButton" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+
