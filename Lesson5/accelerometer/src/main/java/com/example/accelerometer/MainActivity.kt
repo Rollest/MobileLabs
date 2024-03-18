@@ -1,6 +1,8 @@
 package com.example.accelerometer
 
+import android.Manifest
 import android.content.Context
+import android.content.pm.PackageManager
 import android.hardware.Sensor
 import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
@@ -8,7 +10,9 @@ import android.hardware.SensorManager
 import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.example.accelerometer.R
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+
 
 class MainActivity : AppCompatActivity(), SensorEventListener {
 
@@ -27,6 +31,25 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
         azimuthTextView = findViewById(R.id.textViewAzimuth)
         pitchTextView = findViewById(R.id.textViewPitch)
         rollTextView = findViewById(R.id.textViewRoll)
+
+        val cameraPermissionStatus =
+            ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
+        val storagePermissionStatus =
+            ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+        if (cameraPermissionStatus == PackageManager.PERMISSION_GRANTED && storagePermissionStatus
+            == PackageManager.PERMISSION_GRANTED
+        ) {
+            var isWork = true
+        } else {
+            //	Выполняется запрос к пользователь на получение необходимых разрешений
+            val REQUEST_CODE_PERMISSION = 200
+            ActivityCompat.requestPermissions(
+                this, arrayOf<String>(
+                    Manifest.permission.CAMERA,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE
+                ), REQUEST_CODE_PERMISSION
+            )
+        }
     }
 
     override fun onPause() {
