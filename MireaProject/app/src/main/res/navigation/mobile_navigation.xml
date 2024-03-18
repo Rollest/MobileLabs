@@ -38,5 +38,17 @@
         android:name="ru.mirea.vasilevmn.mireaproject.ui.web.WebViewFragment"
         android:label="@string/menu_web_view"
         tools:layout="@layout/fragment_web_view" />
+    <fragment
+        android:id="@+id/nav_barometer"
+        android:name="BarometerFragment"
+        android:label="BarometerFragment" />
+    <fragment
+        android:id="@+id/nav_camera"
+        android:name="CameraFragment"
+        android:label="CameraFragment" />
+    <fragment
+        android:id="@+id/nav_mic"
+        android:name="ru.mirea.vasilevmn.mireaproject.ui.mic.MicrophoneFragment"
+        android:label="MicrophoneFragment" />
 
 </navigation>

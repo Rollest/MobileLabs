@@ -28,5 +28,17 @@
             android:id="@+id/nav_data"
             android:icon="@drawable/ic_robot_foreground"
             android:title="@string/data" />
+        <item
+            android:id="@+id/nav_barometer"
+            android:icon="@drawable/ic_robot_foreground"
+            android:title="@string/barometer" />
+        <item
+            android:id="@+id/nav_camera"
+            android:icon="@drawable/ic_robot_foreground"
+            android:title="@string/camera" />
+        <item
+            android:id="@+id/nav_mic"
+            android:icon="@drawable/ic_robot_foreground"
+            android:title="@string/mic" />
     </group>
 </menu>
