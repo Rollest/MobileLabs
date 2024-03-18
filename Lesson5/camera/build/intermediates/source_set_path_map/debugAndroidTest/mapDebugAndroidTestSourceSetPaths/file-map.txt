@@ -1,0 +1,6 @@
+com.example.camera.test.camera-core-1.5.0-0 C:\Users\kesum\.gradle\caches\transforms-3\18319edf6936886e4f4a47a1bfe3b140\transformed\core-1.5.0\res
+com.example.camera.test.camera-annotation-experimental-1.3.0-1 C:\Users\kesum\.gradle\caches\transforms-3\35637c27b9d69e2cbe5ea0e08fed6d92\transformed\annotation-experimental-1.3.0\res
+com.example.camera.test.camera-androidTest-2 C:\Users\kesum\AndroidStudioProjects\MobileLabs\Lesson5\camera\build\generated\res\resValues\androidTest\debug
+com.example.camera.test.camera-mergeDebugAndroidTestResources-3 C:\Users\kesum\AndroidStudioProjects\MobileLabs\Lesson5\camera\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\merged.dir
+com.example.camera.test.camera-mergeDebugAndroidTestResources-4 C:\Users\kesum\AndroidStudioProjects\MobileLabs\Lesson5\camera\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\stripped.dir
+com.example.camera.test.camera-debugAndroidTest-5 C:\Users\kesum\AndroidStudioProjects\MobileLabs\Lesson5\camera\build\intermediates\merged_res\debugAndroidTest\mergeDebugAndroidTestResources
