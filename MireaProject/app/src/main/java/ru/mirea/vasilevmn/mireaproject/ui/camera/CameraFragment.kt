@@ -60,7 +60,7 @@ class CameraFragment : Fragment() {
 
         // Устанавливаем обработчик нажатия на imageView2
         imageView2.setOnClickListener {
-            selectedView = imageView1
+            selectedView = imageView2
             dispatchTakePictureIntent(imageView2)
         }
 

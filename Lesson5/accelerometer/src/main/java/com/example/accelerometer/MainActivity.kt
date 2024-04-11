@@ -62,6 +62,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
         sensorManager.registerListener(this, accelerometerSensor, SensorManager.SENSOR_DELAY_NORMAL)
     }
 
+
     override fun onSensorChanged(event: SensorEvent) {
         if (event.sensor.type == Sensor.TYPE_ACCELEROMETER) {
             val valueAzimuth = event.values[0]
@@ -72,6 +73,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
             rollTextView.text = "Roll: $valueRoll"
         }
     }
+
 
     override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
         // Не требуется реализация, так как не используется
