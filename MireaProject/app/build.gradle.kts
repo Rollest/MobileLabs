@@ -34,6 +34,8 @@ android {
         jvmTarget = "1.8"
     }
     buildFeatures {
+
+        buildConfig = true
         viewBinding = true
     }
 }
@@ -51,7 +53,8 @@ dependencies {
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
     implementation("androidx.fragment:fragment-ktx:1.6.2")
 
-    implementation("com.itextpdf:itext7-core:7.1.16")
+    implementation("com.itextpdf:itext7-core:7.1.15")
+
 
 
     testImplementation("junit:junit:4.13.2")
