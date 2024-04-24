@@ -1,7 +1,6 @@
 package ru.mirea.vasilevmn.mireaproject
 
 import android.app.Activity
-import android.content.ContentResolver
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
@@ -9,6 +8,7 @@ import android.os.Bundle
 import android.provider.OpenableColumns
 import android.provider.Settings
 import android.view.Menu
+import android.widget.TextView
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
@@ -23,6 +23,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.auth.FirebaseAuth
 import ru.mirea.vasilevmn.mireaproject.databinding.ActivityMainBinding
 import ru.mirea.vasilevmn.mireaproject.ui.files.FilesFragment
 import ru.mirea.vasilevmn.mireaproject.ui.files.FilesViewModel
@@ -35,6 +36,8 @@ class MainActivity : AppCompatActivity() {
     private val REQUEST_CODE_PERMISSION = 200
     lateinit var activityResultLauncher: ActivityResultLauncher<Intent>
     val filesViewModel: FilesViewModel by viewModels()
+
+    private lateinit var mAuth: FirebaseAuth
 
 
 
@@ -90,6 +93,13 @@ class MainActivity : AppCompatActivity() {
             showFragment(fileFragment) // Показываем FileFragment
         }
 
+        mAuth = FirebaseAuth.getInstance()
+        binding.appBarMain.logoutBtn.setOnClickListener {
+            mAuth.signOut()
+            val intent = Intent(this@MainActivity, FirebaseActivity::class.java)
+            startActivity(intent)
+        }
+        binding.appBarMain.textViewEmail.text = intent.getStringExtra("email")
 
 
         val drawerLayout: DrawerLayout = binding.drawerLayout

@@ -11,6 +11,18 @@
         android:layout_height="wrap_content"
         android:theme="@style/Theme.MireaProject.AppBarOverlay">
 
+        <TextView
+            android:id="@+id/textViewEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView" />
+
+        <Button
+            android:id="@+id/logoutBtn"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="Выйти из аккаунта" />
+
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
