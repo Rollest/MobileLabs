@@ -51,9 +51,13 @@
         android:name="ru.mirea.vasilevmn.mireaproject.ui.mic.MicrophoneFragment"
         android:label="MicrophoneFragment" />
     <fragment
-        android:id="@+id/profileFragment"
+        android:id="@+id/nav_profile"
         android:name="ru.mirea.vasilevmn.mireaproject.ui.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/nav_places"
+        android:name="ru.mirea.vasilevmn.mireaproject.ui.places.PlacesFragment"
+        android:label="PlacesFragment" />
 
 </navigation>

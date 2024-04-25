@@ -41,8 +41,12 @@
             android:icon="@drawable/ic_robot_foreground"
             android:title="@string/mic" />
         <item
-            android:id="@+id/profileFragment"
+            android:id="@+id/nav_profile"
             android:icon="@drawable/ic_robot_foreground"
             android:title="@string/profile" />
+        <item
+            android:id="@+id/nav_places"
+            android:icon="@drawable/ic_robot_foreground"
+            android:title="@string/places" />
     </group>
 </menu>
