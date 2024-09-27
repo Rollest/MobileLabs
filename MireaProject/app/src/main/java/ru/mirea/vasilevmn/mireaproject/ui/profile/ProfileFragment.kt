@@ -1,6 +1,7 @@
 package ru.mirea.vasilevmn.mireaproject.ui.profile
 
 import android.content.Context
+import android.content.SharedPreferences
 import androidx.fragment.app.viewModels
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -10,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import ru.mirea.vasilevmn.mireaproject.R
 import java.io.FileOutputStream
 
@@ -20,6 +22,10 @@ class ProfileFragment : Fragment() {
     }
 
     private val viewModel: ProfileViewModel by viewModels()
+
+
+    lateinit var sharedPref: SharedPreferences
+    lateinit var editor: SharedPreferences.Editor
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,16 +40,17 @@ class ProfileFragment : Fragment() {
         val buttonReg: Button = view.findViewById(R.id.buttonRegistration)
         val buttonLogin: Button = view.findViewById(R.id.buttonLogin)
 
+        sharedPref = requireActivity().getSharedPreferences("mirea_settings", AppCompatActivity.MODE_PRIVATE)
+        editor = sharedPref.edit()
+
         buttonReg.setOnClickListener {
             val login = RegLogin.text.toString()
             val password = RegPassword.text.toString()
             try {
-                val outputStream = requireActivity().openFileOutput("password.txt", Context.MODE_PRIVATE)
-                outputStream.write(password.toByteArray())
-                outputStream.close()
-                val outputStream2 = requireActivity().openFileOutput("login.txt", Context.MODE_PRIVATE)
-                outputStream2.write(login.toByteArray())
-                outputStream2.close()
+
+                editor.putString("password", password)
+                editor.putString("login", login)
+                editor.apply()
             } catch (e: Exception) {
                 e.printStackTrace()
             }
@@ -54,18 +61,10 @@ class ProfileFragment : Fragment() {
             val password = LoginPassword.text.toString()
             var isCorrect = true
             try {
-                val inputStream = requireActivity().openFileInput("password.txt")
-                val savedPassword = inputStream.bufferedReader().use { it.readText() }
-                inputStream.close()
-                println(savedPassword)
-                if(savedPassword != password){
+                if(sharedPref.getString("password", "unknown") != password){
                     isCorrect = false
                 }
-                val inputStream2 = requireActivity().openFileInput("login.txt")
-                val savedLogin = inputStream2.bufferedReader().use { it.readText() }
-                inputStream2.close()
-                println(savedLogin)
-                if(savedLogin != login){
+                if(sharedPref.getString("login", "unknown") != login){
                     isCorrect = false
                 }
                 val text = if(isCorrect) "Вы вошли!" else "Вы НЕ вошли :("
