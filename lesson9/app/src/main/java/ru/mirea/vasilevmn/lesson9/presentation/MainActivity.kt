@@ -1,10 +1,11 @@
-package ru.mirea.vasilevmn.lesson9
+package ru.mirea.vasilevmn.lesson9.presentation
 
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import ru.mirea.vasilevmn.lesson9.R
 import ru.mirea.vasilevmn.lesson9.data.repository.MovieRepositoryImpl
 import ru.mirea.vasilevmn.lesson9.domain.models.Movie
 import ru.mirea.vasilevmn.lesson9.domain.repository.MovieRepository
