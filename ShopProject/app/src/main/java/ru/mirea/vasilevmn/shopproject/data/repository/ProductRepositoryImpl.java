@@ -1,51 +1,45 @@
 package ru.mirea.vasilevmn.shopproject.data.repository;
 
+import android.content.Context;
+
+import androidx.lifecycle.LiveData;
+
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-import ru.mirea.vasilevmn.shopproject.domain.models.Product;
-import ru.mirea.vasilevmn.shopproject.domain.repository.ProductRepository;
+import ru.mirea.vasilevmn.shopproject.domain.models.ProductEntity;
+import ru.mirea.vasilevmn.shopproject.domain.repository.ProductDao;
 
-public class ProductRepositoryImpl implements ProductRepository {
-    private final List<Product> Products = new ArrayList<> (
-            Arrays.asList(
-                    new Product(1, "iPhone 16", "iPhone 16 оснастили новым процессором A18.", 110_000.99f),
-                new Product(2, "Dyson dust sucker", "Sucks nice", 69999.99f),
-                new Product(3, "Блендер", "Просто блендер", 7000f)
-            )
-    );
+public class ProductRepositoryImpl {
+    private final ProductDao productDao;
 
-    @Override
-    public List<Product> getAllProducts() {
-        return Products;
+    public ProductRepositoryImpl(Context context) {
+
+        AppDatabase db = AppDatabase.getInstance(context);
+        this.productDao = db.productDao();
     }
 
-    @Override
-    public Product getProductById(int id) {
-        for (Product Product : Products) {
-            if (Product.getId() == id) {
-                return Product;
+    public List<ProductEntity> getAllProducts() {
+        return productDao.getAllProducts();
+    }
+
+    public List<ProductEntity> getProductsByIds(List<Integer> ids) {
+        List<ProductEntity> products = new ArrayList<>();
+        for (int id : ids) {
+            ProductEntity product = productDao.getProductById(id);
+            if (product != null) {
+                products.add(product);
             }
         }
-        return null;
+        return products;
     }
 
-    @Override
-    public List<Product> getProductsByTitle(String title) {
-        List<Product> result = new ArrayList<>();
-        for (Product Product : Products) {
-            if (Product.getTitle().equalsIgnoreCase(title)) {
-                result.add(Product);
-            }
-        }
-        return result;
+    public ProductEntity getProductById(int id){
+        return productDao.getProductById(id);
     }
 
-    @Override
-    public boolean addNewProduct(String title, String author, float price) {
-        Product newProduct = new Product(this.Products.size() + 1, title, author, price);
-        this.Products.add(newProduct);
-        return true;
+    public void addNewProduct(String title, String description, float price, String imageURL) {
+        ProductEntity product = new ProductEntity(title, description, price, imageURL);
+        productDao.insertProduct(product);
     }
 }

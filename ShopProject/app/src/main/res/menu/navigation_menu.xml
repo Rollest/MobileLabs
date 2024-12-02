@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_login"
+        android:icon="@drawable/ic_login"
+        android:title="Вход/Регистрация" />
+    <item
+        android:id="@+id/nav_product_list"
+        android:icon="@drawable/ic_products"
+        android:title="Список товаров" />
+    <item
+        android:id="@+id/nav_wishlist"
+        android:icon="@drawable/ic_wishlist"
+        android:title="Избранное" />
+    <item
+        android:id="@+id/nav_currency_selection"
+        android:icon="@drawable/ic_currency"
+        android:title="Выбор валюты" />
+    <item
+        android:id="@+id/nav_logout"
+        android:icon="@drawable/ic_logout"
+        android:title="Выйти" />
+</menu>
