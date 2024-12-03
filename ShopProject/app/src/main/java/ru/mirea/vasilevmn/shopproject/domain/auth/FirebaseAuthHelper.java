@@ -1,4 +1,4 @@
-package ru.mirea.vasilevmn.shopproject.data.auth;
+package ru.mirea.vasilevmn.shopproject.domain.auth;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;

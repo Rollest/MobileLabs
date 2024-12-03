@@ -9,7 +9,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.google.firebase.auth.FirebaseUser;
 
-import ru.mirea.vasilevmn.shopproject.data.auth.FirebaseAuthHelper;
+import ru.mirea.vasilevmn.shopproject.domain.auth.FirebaseAuthHelper;
 
 public class LoginViewModel extends AndroidViewModel {
     private final FirebaseAuthHelper authHelper;
