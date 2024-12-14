@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
@@ -71,11 +73,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             Bundle bundle = new Bundle();
             bundle.putInt(ProductDetailsFragment.ARG_PRODUCT_ID, product.id);
 
-            ((MainActivity) v.getContext()).getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.fragment_container, ProductDetailsFragment.class, bundle)
-                    .addToBackStack(null)
-                    .commit();
+            NavController navController = Navigation.findNavController(holder.itemView);
+            navController.navigate(R.id.action_nav_product_list_to_productDetailsFragment, bundle);
         });
     }
 

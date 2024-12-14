@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
@@ -58,11 +60,8 @@ public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.ViewHo
             Bundle bundle = new Bundle();
             bundle.putInt(ProductDetailsFragment.ARG_PRODUCT_ID, product.id);
 
-            ((MainActivity) v.getContext()).getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.fragment_container, ProductDetailsFragment.class, bundle)
-                    .addToBackStack(null)
-                    .commit();
+            NavController navController = Navigation.findNavController(holder.itemView);
+            navController.navigate(R.id.action_nav_wishlist_to_productDetailsFragment, bundle);
         });
     }
 

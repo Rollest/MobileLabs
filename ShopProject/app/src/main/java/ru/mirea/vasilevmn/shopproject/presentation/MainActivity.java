@@ -1,21 +1,17 @@
 package ru.mirea.vasilevmn.shopproject.presentation;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.MenuItem;
 
 import androidx.activity.OnBackPressedCallback;
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.NavigationUI;
 
 import ru.mirea.vasilevmn.shopproject.R;
 import ru.mirea.vasilevmn.shopproject.databinding.ActivityMainBinding;
-import ru.mirea.vasilevmn.shopproject.presentation.fragment.CurrencySelectionFragment;
-import ru.mirea.vasilevmn.shopproject.presentation.fragment.ProductListFragment;
-import ru.mirea.vasilevmn.shopproject.presentation.fragment.WishlistFragment;
 import ru.mirea.vasilevmn.shopproject.presentation.viewmodel.MainViewModel;
 
 public class MainActivity extends AppCompatActivity {
@@ -34,60 +30,30 @@ public class MainActivity extends AppCompatActivity {
         viewModel.isUserLoggedIn().observe(this, this::updateMenuItems);
 
         viewModel.fetchCurrencyRates();
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        NavigationUI.setupWithNavController(binding.bottomNavigation, navController);
 
-        binding.bottomNavigation.setOnItemSelectedListener(this::onNavigationItemSelected);
-
-        if (savedInstanceState == null) {
-            openFragment(new ProductListFragment());
-        }
+        binding.bottomNavigation.setOnItemSelectedListener(item -> {
+            int id = item.getItemId();
+            if (id == R.id.nav_logout) {
+                viewModel.logout();
+                viewModel.isUserLoggedIn().observe(this, this::updateMenuItems);
+                return true;
+            } else if (id == R.id.nav_login) {
+                navController.navigate(R.id.nav_login);
+                return true;
+            }
+            return NavigationUI.onNavDestinationSelected(item, navController);
+        });
 
         getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
             @Override
             public void handleOnBackPressed() {
-                if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
-                    getSupportFragmentManager().popBackStack();
-                } else {
+                if (!navController.popBackStack()) {
                     finish();
                 }
             }
         });
-    }
-
-    private boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        Fragment fragment = null;
-        int id = item.getItemId();
-
-        if (id == R.id.nav_product_list) {
-            fragment = new ProductListFragment();
-        } else if (id == R.id.nav_wishlist) {
-            fragment = new WishlistFragment();
-        } else if (id == R.id.nav_login) {
-            startActivity(new Intent(this, LoginActivity.class));
-            return true;
-        } else if (id == R.id.nav_logout) {
-            viewModel.logout();
-            finish();
-            return true;
-        } else if (id == R.id.nav_currency_selection) {
-            getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.fragment_container, new CurrencySelectionFragment())
-                    .addToBackStack(null)
-                    .commit();
-            return true;
-        }
-
-        if (fragment != null) {
-            openFragment(fragment);
-        }
-        return true;
-    }
-
-    private void openFragment(Fragment fragment) {
-        getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.fragment_container, fragment)
-                .addToBackStack(null)
-                .commit();
     }
 
     private void updateMenuItems(boolean isUserLoggedIn) {

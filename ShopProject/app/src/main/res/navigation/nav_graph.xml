@@ -1,28 +1,37 @@
-<?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/nav_product_list">
 
     <fragment
-        android:id="@+id/FirstFragment"
-        android:name="ru.mirea.vasilevmn.shopproject.presentation.FirstFragment"
-        android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first" >
-
+        android:id="@+id/nav_product_list"
+        android:name="ru.mirea.vasilevmn.shopproject.presentation.fragment.ProductListFragment"
+        android:label="Product List" >
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
+            android:id="@+id/action_nav_product_list_to_productDetailsFragment"
+            app:destination="@id/productDetailsFragment" />
     </fragment>
+
     <fragment
-        android:id="@+id/SecondFragment"
-        android:name="ru.mirea.vasilevmn.shopproject.presentation.SecondFragment"
-        android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second" >
-
+        android:id="@+id/nav_wishlist"
+        android:name="ru.mirea.vasilevmn.shopproject.presentation.fragment.WishlistFragment"
+        android:label="Wishlist" >
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+            android:id="@+id/action_nav_wishlist_to_productDetailsFragment"
+            app:destination="@id/productDetailsFragment" />
     </fragment>
+
+    <fragment
+        android:id="@+id/nav_currency_selection"
+        android:name="ru.mirea.vasilevmn.shopproject.presentation.fragment.CurrencySelectionFragment"
+        android:label="Currency Selection" />
+
+    <activity
+        android:id="@+id/nav_login"
+        android:name="ru.mirea.vasilevmn.shopproject.presentation.LoginActivity"
+        android:label="Login" />
+
+    <fragment
+        android:id="@+id/productDetailsFragment"
+        android:name="ru.mirea.vasilevmn.shopproject.presentation.fragment.ProductDetailsFragment"
+        android:label="Product Details" />
 </navigation>
