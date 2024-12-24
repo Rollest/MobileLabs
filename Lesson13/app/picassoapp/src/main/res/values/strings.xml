@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">PicassoApp</string>
+    <string name="photo">Фото</string>
+    <string name="action_settings">Настройки</string>
+    <string name="placeholder">Загрузка...</string>
+    <string name="error_image">Ошибка загрузки</string>
+</resources>

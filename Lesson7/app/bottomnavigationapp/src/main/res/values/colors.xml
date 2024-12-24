@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#1565C0</color> <!-- Насыщенный синий -->
+    <color name="colorPrimaryVariant">#003c8f</color> <!-- Темно-синий -->
+    <color name="colorOnPrimary">#FFFFFF</color> <!-- Белый текст на синем фоне -->
+    <color name="colorSecondary">#4FC3F7</color> <!-- Светло-голубой -->
+    <color name="colorSecondaryVariant">#0288D1</color> <!-- Голубой средней насыщенности -->
+    <color name="colorOnSecondary">#FFFFFF</color> <!-- Белый текст -->
+    <color name="colorBackground">#E3F2FD</color> <!-- Очень светло-голубой фон -->
+    <color name="colorOnBackground">#0D47A1</color> <!-- Темно-синий текст -->
+    <color name="colorSurface">#BBDEFB</color> <!-- Светлый фон для карточек -->
+    <color name="colorOnSurface">#1A237E</color> <!-- Темно-синий текст -->
+    <color name="colorError">#D32F2F</color> <!-- Красный для ошибок -->
+    <color name="colorOnError">#FFFFFF</color> <!-- Белый текст на фоне ошибок -->
+</resources>
